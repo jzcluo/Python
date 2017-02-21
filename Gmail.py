@@ -5,19 +5,7 @@ import imaplib
 import getpass
 import email
 
-'''
-conn = imaplib.IMAP4_SSL('imap.gmail.com')
 
-
-try:
-    conn.login('jeffreyzcluo@gmail.com',getpass.getpass())
-except imaplib.IMAP4.error:
-    print("fail")
-
-ok,mails=conn.select("INBOX")
-
-idk,data=conn.search(None, "uber")
-'''
 '''
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
 mail.login("jeffreyzcluo@gmail.com", getpass.getpass())
@@ -46,12 +34,6 @@ mail.close()
 mail.logout()
 '''
 
-'''
-uberFee=0
-for i in file:
-    if "$" in i:
-
-'''
 
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
 mail.login("jeffreyzcluo@gmail.com", getpass.getpass())
@@ -73,6 +55,7 @@ for num in data[0].split():
             if where != -1:
                 splitStr=decodedMsg[where+1:where+7].split()
                 uberFee+=eval(splitStr[0].strip("n").strip("\\"))
+                break
         
 print(uberFee)
 
